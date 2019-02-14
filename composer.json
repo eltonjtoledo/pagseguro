@@ -1,0 +1,20 @@
+{
+    "name": "EltClassbr/ecommerce",
+    "authors": [
+        {
+            "name": "Elton J. Toledo",
+            "email": "eltonjtoledo@gmail.com"
+        }
+    ],
+    "require": {
+    	"phpmailer/phpmailer":"5.2.22",
+    	"slim/slim":"2.0",
+        "rain/raintpl":"3.0.0",
+        "guzzlehttp/guzzle":">= 5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "EltClass\\": "vendor\\eltclass\\php-classes\\src"
+        }
+    }
+}
