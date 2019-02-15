@@ -5,6 +5,7 @@ namespace EltClass\Model;
 use \EltClass\DB\Sql;
 use \EltClass\Model;
 use \EltClass\Model\Cart;
+use \EltClass\Model\Address;
 
 class Order extends Model {
 
@@ -216,6 +217,13 @@ class Order extends Model {
 	public function getFromSession()
 	{
 		$this->setData($_SESSION[Order::SESSION]);
+	}
+
+	public function getAddress():Address
+	{
+		$address = new Address();
+		$address->setData($this->getValues());
+		return $address;
 	}
 }
 

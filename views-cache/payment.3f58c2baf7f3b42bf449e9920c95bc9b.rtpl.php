@@ -489,6 +489,7 @@
 
         $("#form-credit").on("submit", function (e) {
             e.preventDefault();
+            $("#place_order_credit").attr('disabled', 'disabled');
             if (!isValidCPF($('#form-credit [name="cpf"]').val())) {
                 showError("Este numero de CPF não é valido");
                 return false;
@@ -499,7 +500,7 @@
             $.each(formData, function (index, field) {
                 params[field.name] = field.value;
             });
-            console.log(params);
+
             PagSeguroDirectPayment.createCardToken({
                 cardNumber: params.number, // Número do cartão de crédito
                 brand: params.brand, // Bandeira do cartão
@@ -507,16 +508,23 @@
                 expirationMonth: params.month, // Mês da expiração do cartão
                 expirationYear: params.year, // Ano da expiração do cartão, é necessário os 4 dígitos.
                 success: function (response) {
-                    console.log(response);
-
                     PagSeguroDirectPayment.onSenderHashReady(function (response) {
                         if (response.status == 'error') {
                             console.log(response.message);
                             return false;
                         }
                         var hash = response.senderHash; //Hash estará disponível nesta variável.
-                        console.log(response)
+                        params.hash = response.senderHash
+                        console.log(params);
                     });
+                    params.token = response.card.token
+
+                    $.post(
+                        "/payment/credit",
+                        $.param(params),
+                        function(response){
+                            console.log(response);
+                        });
                     // Retorna o cartão tokenizado.
                 },
                 error: function (response) {
@@ -524,9 +532,11 @@
                     // Callback para chamadas que falharam.
                 },
                 complete: function (response) {
+                    $("#place_order_credit").removeAttr('disabled');
                     // Callback para todas chamadas.
                 }
             });
+            
         });
     });
 </script>
