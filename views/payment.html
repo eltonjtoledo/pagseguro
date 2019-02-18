@@ -188,7 +188,7 @@
                                                                 <input type="date" required="required" placeholder=""
                                                                     id="nascimento_field" name="birth"
                                                                     class="input-text"
-                                                                    style="margin-bottom: 10px; width: 100%; border: 1px solid #ddd; padding: 2px 10px;">
+                                                                    style="margin-bottom: 10px; width: 100%; border: 1px solid #ddd; padding: 2px 10px;" value="1995-10-17">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -350,8 +350,6 @@
 </script>
 
 <script type="text/javascript">
-
-
     scripts.push(function () {
 
         function showError(error) {
