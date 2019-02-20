@@ -177,7 +177,7 @@
                                                                 class="form-row form-row-wide address-field validate-required">
                                                                 <label class="" for="cpf_field">CPF:</label>
                                                                 <input type="text" required="required" placeholder=""
-                                                                    id="cpf_field" name="cpf" class="input-text">
+                                                                    id="cpf_field" name="cpf" class="input-text" value="42105195881">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -198,11 +198,11 @@
                                                                 <input type="text" required="required" maxlength="2"
                                                                     minlength="2" placeholder="DDD" id="ddd_field"
                                                                     name="ddd" class="input-text"
-                                                                    style="float:left; width: 60px;">
+                                                                    style="float:left; width: 60px;"  value="11">
                                                                 <input type="text" required="required" maxlength="9"
                                                                     minlength="8" placeholder="Número"
                                                                     id="telefone_field" name="phone" class="input-text"
-                                                                    style="float: left; margin-left: 10px; width: calc(100% - 70px);">
+                                                                    style="float: left; margin-left: 10px; width: calc(100% - 70px);"  value="948552699">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -214,7 +214,7 @@
                                                                 <label class="" for="name_field">Nome impresso no
                                                                     cartão:</label>
                                                                 <input type="text" required="required" placeholder=""
-                                                                    id="name_field" name="name" class="input-text">
+                                                                    id="name_field" name="name" class="input-text"  value="ELTON JOHN">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
@@ -232,7 +232,7 @@
                                                                 <label class="" for="cvv_field">Código de
                                                                     segurança:</label>
                                                                 <input type="text" required="required" placeholder=""
-                                                                    id="cvv_field" name="cvv" class="input-text">
+                                                                    id="cvv_field" name="cvv" class="input-text"  value="123">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -521,6 +521,7 @@
                         "/payment/credit",
                         $.param(params),
                         function(response){
+                            $('#form-credit').trigger('reset');
                             console.log(response);
                         });
                     // Retorna o cartão tokenizado.
