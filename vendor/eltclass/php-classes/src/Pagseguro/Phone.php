@@ -25,7 +25,7 @@ class Phone {
     public function getDOMElement():DOMElement
     {
         $dom = new \DOMDocument();
-        $fone = $dom->createElement('document');
+        $fone = $dom->createElement('phone');
         $fone = $dom->appendChild($fone);
 
         $areaCode = $dom->createElement('areaCode', $this->areaCode);
