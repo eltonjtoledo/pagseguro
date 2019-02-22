@@ -34,8 +34,8 @@ class Sender {
         $sender = $dom->createElement('sender');
         $sender = $dom->appendChild($sender);
 
-        $id = $dom->createElement('name', $this->name);
-        $id = $sender->appendChild($id);
+        $name = $dom->createElement('name', $this->name);
+        $name = $sender->appendChild($name);
 
         $email = $dom->createElement('email', $this->email);
         $email = $sender->appendChild($email);
