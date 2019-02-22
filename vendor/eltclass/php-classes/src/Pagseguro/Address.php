@@ -27,10 +27,10 @@ class Address {
         $this->postalCode = $postalCode;
     }
 
-    public function getDOMElement():DOMElement
+    public function getDOMElement(string $node = 'address'):DOMElement
     {
         $dom = new \DOMDocument();
-        $address = $dom->createElement('address');
+        $address = $dom->createElement($node);
         $address = $dom->appendChild($address);
 
         $street = $dom->createElement('street', $this->street);
