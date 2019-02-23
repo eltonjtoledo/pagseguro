@@ -55,8 +55,9 @@
        <installment>
             <quantity>{quantidade_de_parcelas_escolhida}</quantity>
             <value>{installmentAmount_obtido_no_retorno_do_passo_2.5}</value>
-    		<noInterestInstallmentQuantity>{valor_maxInstallmentNoInterest_incluido_no_passo_2.5}
-         	</noInterestInstallmentQuantity>
+    		<noInterestInstallmentQuantity>
+                {valor_maxInstallmentNoInterest_incluido_no_passo_2.5}
+            </noInterestInstallmentQuantity>
         </installment>
         <holder>
             <name>Nome impresso no cartao</name>
