@@ -35,6 +35,10 @@ class CreditCard {
         $installment = $dom->importNode($installment, true);
         $installment = $creditCard->appendChild($installment);
     
+        $holder = $this->holder->getDOMElement();
+        $holder = $dom->importNode($holder, true);
+        $holder = $creditCard->appendChild($holder);
+    
         $billingAddress = $this->billingAddress->getDOMElement('billingAddress');
         $billingAddress = $dom->importNode($billingAddress, true);
         $billingAddress = $creditCard->appendChild($billingAddress);

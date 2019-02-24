@@ -7,16 +7,27 @@ class Installment{
     private $value;
     private $noInterestInstallmentQuantity;
 
-    public function __construct(int $quantity, string $value, string $noInterestInstallmentQuantity)
+    public function __construct(int $quantity, string $value)
     {
-       if(!$quantity || !$value || !$noInterestInstallmentQuantity)
+       if(!$quantity || !$value)
        {
             throw new Exception("ERRO: Para proseguir informe quantidade, value, noInterestInstallmentQuantity");  
        }
 
+       if($quantity <=0 || $quantity > config::MAX_INSTALLMENT)
+       {
+           throw new Exception("ERRO: Quantidade de Parcelas Invalida!");
+       }
+
+       if($value <=0)
+       {
+           throw new Exception("ERRO: Valor de Pacelas Invalido");
+           
+       }
+
        $this->quantity = $quantity;
        $this->value = $value;
-       $this->noInterestInstallmentQuantity = $noInterestInstallmentQuantity;
+       $this->noInterestInstallmentQuantity = config::MAX_INSTALLMENT_NO_INTEREST;
 
     }
     
@@ -29,7 +40,7 @@ class Installment{
         $quantity = $dom->createElement('quantity', $this->quantity);
         $quantity = $installment->appendChild($quantity);
 
-        $value = $dom->createElement('value', $this->value);
+        $value = $dom->createElement('value', number_format($this->value,'.',''));
         $value = $installment->appendChild($value);
 
         $noInterestInstallmentQuantity = $dom->createElement('noInterestInstallmentQuantity', $this->noInterestInstallmentQuantity);
