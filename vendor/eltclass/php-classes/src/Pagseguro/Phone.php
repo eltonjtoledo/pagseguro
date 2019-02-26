@@ -2,6 +2,10 @@
 
 namespace EltClass\Pagseguro;
 
+use Exception;
+use DOMDocument;
+use DOMElement;
+
 class Phone {
     private $areaCode;
     private $number;
@@ -24,7 +28,7 @@ class Phone {
 
     public function getDOMElement():DOMElement
     {
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $fone = $dom->createElement('phone');
         $fone = $dom->appendChild($fone);
 

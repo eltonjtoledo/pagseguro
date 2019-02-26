@@ -1,6 +1,10 @@
 <?php
 
-namespace \EltClass\Pagseguro\CreditCard;
+namespace EltClass\Pagseguro\CreditCard;
+
+    // use \Exception;
+    // use \DOMDocument;
+    // use \DOMElement;
 
 class Holder{
     private $name;
@@ -24,7 +28,7 @@ class Holder{
     
     public function getDOMElement():DOMElement
     {
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $holder = $dom->createElement('holder');
         $holder = $dom->appendChild($holder);
 

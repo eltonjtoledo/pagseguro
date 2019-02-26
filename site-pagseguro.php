@@ -6,19 +6,37 @@ use \EltClass\Model\Order;
 
 use \EltClass\Pagseguro\Config;
 use \EltClass\Pagseguro\Transporter;
+use \EltClass\Pagseguro\Document;
+use \EltClass\Pagseguro\Phone;
+use \EltClass\Pagseguro\Address;
+use \EltClass\Pagseguro\Sender;
+
 
 $app->post('/payment/credit', function () {
-    User::verifyLogin();
+    // print_r($_POST['hash']);
+    User::verifyLogin(false);
     
     $order = new Order();
     $order->getFromSession();
 
     $address = $order->getAddress();
     $cart = $order->getCart();
+
     
-        print_r($order->getValues());
-        print_r($address->getValues());
-        print_r($cart->getValues());
+
+    $birthDate = $_POST['birth'];
+
+    $cpf = new Document(Document::CPF, $_POST['cpf']);
+    $phone = new Phone(11,948552699);
+    $addressObj = new Address($address->getdesaddress(),$address->getdesnumber(),$address->getdescomplement(),$address->getdesdistrict(),$address->getdescity(),$address->getdesstate(),$address->getdescountry(),$address->getdeszipcode());
+    // $sender = new Sender($order->getdesperson(),$order->getdesemail(), $phone, $cpf,$_POST['']);
+    
+    $dom = new DOMDocument();
+    $teste = $addressObj->getDOMElement();
+    $testNode = $dom->importNode($teste, true);
+    $dom->appendChild($testNode);
+
+    echo $dom->saveXML();
 });
 
 $app->get('/payment', function () {

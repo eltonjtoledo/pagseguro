@@ -2,11 +2,15 @@
 
 namespace EltClass\Pagseguro;
 
+use Exception;
+use DOMDocument;
+use DOMElement;
+
 class Document {
     private $type;
     private $value;
 
-    const CPF = '';
+    const CPF = 'CPF';
 
     public function __Construct(string $type, string $value)
     {
@@ -27,7 +31,7 @@ class Document {
         $this->value = $value;
     }
 
-    function isValidCPF($number):boolean
+    function isValidCPF($number):bool
     {
         $number = preg_replace('/[^0-9]/', '', (string) $number);
     
@@ -49,7 +53,7 @@ class Document {
 
     public function getDOMElement():DOMElement
     {
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
         $Document = $dom->createElement('document');
         $Document = $dom->appendChild($Document);
 

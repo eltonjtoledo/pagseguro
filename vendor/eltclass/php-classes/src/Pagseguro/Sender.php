@@ -2,6 +2,11 @@
 
 namespace EltClass\Pagseguro;
 
+use Exception;
+use DOMDocument;
+use DOMElement;
+
+
 class Sender {
     private $name;
     private $email;

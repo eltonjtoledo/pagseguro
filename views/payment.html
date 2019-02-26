@@ -513,8 +513,7 @@
                         }
                         var hash = response.senderHash; //Hash estará disponível nesta variável.
                         params.hash = response.senderHash
-                        console.log(params);
-                    });
+                    });                
                     params.token = response.card.token
 
                     $.post(
@@ -522,7 +521,7 @@
                         $.param(params),
                         function(response){
                             $('#form-credit').trigger('reset');
-                            console.log(response);
+                            console.log(params);
                         });
                     // Retorna o cartão tokenizado.
                 },

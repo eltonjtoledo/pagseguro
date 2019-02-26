@@ -39,12 +39,10 @@ class Item {
         $description = $dom->createElement('description', $this->description);
         $description = $item->appendChild($description);
 
-
-
         $quantity = $dom->createElement('quantity', $this->quantity);
         $quantity = $item->appendChild($quantity);
 
-        $amount = $dom->createElement('amount', $this->amount);
+        $amount = $dom->createElement('amount', number_format($this->amount,2, '.',''));
         $amount = $item->appendChild($amount);
 
         return $item;
